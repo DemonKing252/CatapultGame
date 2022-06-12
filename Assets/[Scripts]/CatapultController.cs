@@ -17,7 +17,8 @@ public class CatapultController : MonoBehaviour
     [SerializeField] private LineRenderer line1;
     [SerializeField] private LineRenderer line2;
 
-
+    [SerializeField]
+    private GameObject replicateParentTransform;
     private Scene _currentScene;
     private PhysicsScene2D _physicsCurrentScene;
 
@@ -35,6 +36,8 @@ public class CatapultController : MonoBehaviour
 
         _simulationScene = SceneManager.CreateScene("Simulation", new CreateSceneParameters(LocalPhysicsMode.Physics2D));
         _physicsSimulationScene = _simulationScene.GetPhysicsScene2D();
+
+        replicateParentTransform = GameObject.Find("[ReplicatedObjects]");
     }
     private void Awake()
     {
@@ -67,25 +70,6 @@ public class CatapultController : MonoBehaviour
         }
     }
 
-    //public void CalculateProjectilePath(Vector3 impulse)
-    //{
-    //    projectileLine.positionCount = sliceCount;
-    //    for (int i = 0; i < projectileLine.positionCount; i++)
-    //    {
-    //        // Newtons Kinematic equation for finding Displacement, given intial velocity, acceleration, and time.
-    //        // dx = vi * t      <---- ax is 0, so the right side cancels out.
-    //        // dy = vi * t + 1/2 * a * t^2
-    //
-    //        float t = 0.1f * (float)i;
-    //
-    //
-    //        float offsetX = impulse.x * t;
-    //        float offsetY = impulse.y * t + 0.5f * Physics2D.gravity.y * Mathf.Pow(t, 2);
-    //
-    //        projectileLine.SetPosition(i, ballRigidBody.transform.position + new Vector3(offsetX, offsetY));
-    //    }
-    //}
-
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -111,6 +95,22 @@ public class CatapultController : MonoBehaviour
         dummyObject.GetComponent<Rigidbody2D>().velocity = impulse;
         dummyObject.GetComponent<Rigidbody2D>().gravityScale = 1f;
 
+        print(replicateParentTransform.transform.childCount);
+        // Replicate all objects in this scene.
+        List<GameObject> replicatedObjects = new List<GameObject>();
+        for (int i = 0; i < replicateParentTransform.transform.childCount; i++)
+        {
+            GameObject temp = Instantiate(replicateParentTransform.transform.GetChild(i).gameObject);
+
+            temp.transform.position = replicateParentTransform.transform.GetChild(i).gameObject.transform.position;
+            temp.transform.rotation = replicateParentTransform.transform.GetChild(i).gameObject.transform.rotation;
+            temp.transform.localScale = replicateParentTransform.transform.GetChild(i).gameObject.transform.localScale;
+
+            replicatedObjects.Add(temp);
+            SceneManager.MoveGameObjectToScene(temp, _simulationScene);
+        }
+        
+
 
         int stepCount = 200;
         projectileLine.positionCount = stepCount;
@@ -120,6 +120,12 @@ public class CatapultController : MonoBehaviour
             projectileLine.SetPosition(i, dummyObject.transform.position);
         }
 
+        for (int i = 0; i < replicatedObjects.Count; i++)
+        {
+            Destroy(replicatedObjects[i]);
+        }
+        print("got here");
+        replicatedObjects.Clear();
         Destroy(dummyObject);
     }
 
