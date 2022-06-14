@@ -17,8 +17,8 @@ public class CatapultController : MonoBehaviour
     [SerializeField] private LineRenderer line1;
     [SerializeField] private LineRenderer line2;
 
-    [SerializeField]
-    private GameObject replicateParentTransform;
+
+    [SerializeField] private GameObject replicateParentTransform;
     private Scene _currentScene;
     private PhysicsScene2D _physicsCurrentScene;
 
@@ -37,7 +37,6 @@ public class CatapultController : MonoBehaviour
         _simulationScene = SceneManager.CreateScene("Simulation", new CreateSceneParameters(LocalPhysicsMode.Physics2D));
         _physicsSimulationScene = _simulationScene.GetPhysicsScene2D();
 
-        replicateParentTransform = GameObject.Find("[ReplicatedObjects]");
     }
     private void Awake()
     {
@@ -49,7 +48,6 @@ public class CatapultController : MonoBehaviour
 
     public void OnBallStateChanged(BallState state)
     {
-        Debug.Log("Ball state: " + state.ToString());
 
         ballHeld = state switch
         {
@@ -61,10 +59,9 @@ public class CatapultController : MonoBehaviour
         {
             Vector2 impulse = (catapultOrgin.position - ballRigidBody.transform.position)/*.normalized*/ * impulseFactor;
             this.PredictProjectilePath(impulse);
-            //this.CalculateProjectilePath(impulse);
             this.LaunchBall(impulse);
 
-            //ropeLine.enabled = false;
+            ropeLine.enabled = false;
             line1.enabled = false;
             line2.enabled = false;
         }
@@ -95,7 +92,6 @@ public class CatapultController : MonoBehaviour
         dummyObject.GetComponent<Rigidbody2D>().velocity = impulse;
         dummyObject.GetComponent<Rigidbody2D>().gravityScale = 1f;
 
-        print(replicateParentTransform.transform.childCount);
         // Replicate all objects in this scene.
         List<GameObject> replicatedObjects = new List<GameObject>();
         for (int i = 0; i < replicateParentTransform.transform.childCount; i++)
@@ -124,7 +120,6 @@ public class CatapultController : MonoBehaviour
         {
             Destroy(replicatedObjects[i]);
         }
-        print("got here");
         replicatedObjects.Clear();
         Destroy(dummyObject);
     }

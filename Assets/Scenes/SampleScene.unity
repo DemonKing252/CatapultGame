@@ -1053,11 +1053,11 @@ MonoBehaviour:
   ballRigidBody: {fileID: 1675227357}
   sliceCount: 40
   catapultOrgin: {fileID: 723318359}
-  impulseFactor: 6
+  impulseFactor: 8
   ropeLine: {fileID: 1276591142}
   line1: {fileID: 457308214}
   line2: {fileID: 1514244926}
-  replicateParentTransform: {fileID: 0}
+  replicateParentTransform: {fileID: 1954432740}
 --- !u!4 &1578157397
 Transform:
   m_ObjectHideFlags: 0
