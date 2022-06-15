@@ -35,11 +35,13 @@ public class CameraController : MonoBehaviour
     {
         // The position of the camera will be based on the positon of the ball falling within the preset boundary of the given level.
         // It will grab the width and height of the levelBoundary variable in the level then will offset the camera width and height
-        transform.position = new Vector3(Mathf.Clamp(followTarget.position.x, levelBoundary.position.x - levelBoundary.rect.width / 2 + (((float)Camera.main.orthographicSize) * Camera.main.aspect),
+        Vector3 targetPosition = new Vector3(Mathf.Clamp(followTarget.position.x, levelBoundary.position.x - levelBoundary.rect.width / 2 + (((float)Camera.main.orthographicSize) * Camera.main.aspect),
                                                                               levelBoundary.position.x + levelBoundary.rect.width / 2 - (((float)Camera.main.orthographicSize) * Camera.main.aspect)),
                                          Mathf.Clamp(followTarget.position.y, levelBoundary.position.y - levelBoundary.rect.height / 2 + ((float)Camera.main.orthographicSize),
                                                                               levelBoundary.position.y + levelBoundary.rect.height / 2 - ((float)Camera.main.orthographicSize)),
                                                         transform.position.z);
+
+        transform.position = Vector3.Lerp(transform.position, targetPosition, 4f * Time.deltaTime);
 
     }
 }
