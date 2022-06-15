@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7297163532896726537
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7297163532896726539}
+  - component: {fileID: 7297163532896726536}
+  m_Layer: 0
+  m_Name: ParallaxBackground
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7297163532896726539
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7297163532896726537}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.9681203, y: -2.42, z: 0.12935337}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7297163532896726536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7297163532896726537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 489a0936b9cb0d747bc1d22881ea2e58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backgrounds:
+  - prefab: {fileID: 4831496663848112803, guid: 8b377ab4f4147c44687e9d1bb69c6bad, type: 3}
+    spawnDimensions: {x: 6, y: 6}
+    sizeDimensions: {x: 14.72, y: 8.32}
+    scrollSpeed: 0.1
+  - prefab: {fileID: 8351808922207029413, guid: 63d52682d6f3df44f86d57716775725c, type: 3}
+    spawnDimensions: {x: 6, y: 1}
+    sizeDimensions: {x: 9.6, y: 8.32}
+    scrollSpeed: 0.2
+  - prefab: {fileID: 5104184220289703241, guid: 9c15b9eb9210c974bad39ab6d7057139, type: 3}
+    spawnDimensions: {x: 6, y: 1}
+    sizeDimensions: {x: 7.04, y: 8.32}
+    scrollSpeed: 0.2
+  - prefab: {fileID: 2994674153562433523, guid: ff9079eee26992b43b8b29eb9dfc3b6e, type: 3}
+    spawnDimensions: {x: 6, y: 1}
+    sizeDimensions: {x: 7.68, y: 8.32}
+    scrollSpeed: 0.2
+  x: 0

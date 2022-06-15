@@ -7,9 +7,12 @@ public class CameraController : MonoBehaviour
     public RectTransform levelBoundary;
     public Transform followTarget;
 
+    private CatapultController catapult;
+
     // Start is called before the first frame update
     void Start()
     {
+        catapult = FindObjectOfType<CatapultController>();
         /// Log for the purposes of checking if the boundary limits are working
         //Debug.Log("Boundary -X: " + (levelBoundary.position.x - levelBoundary.rect.width / 2 + (((float)Camera.main.orthographicSize) * Camera.main.aspect)) + "\n" +
         //          "Boundary +X: " + (levelBoundary.position.x + levelBoundary.rect.width / 2 - (((float)Camera.main.orthographicSize) * Camera.main.aspect)) + "\n" +
@@ -18,9 +21,10 @@ public class CameraController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        ClampCameraPosition();
+        if (!catapult.ballHeld)
+            ClampCameraPosition();
 
         /// Checking camera position to match with the boundary logs
         //Debug.Log("Camera Position X: " + transform.position.x + "\n" +

@@ -10,7 +10,7 @@ public class CatapultController : MonoBehaviour
     [SerializeField] private Rigidbody2D ballRigidBody;
     private Vector3 originalPosition;
     [SerializeField] private int sliceCount;
-    private bool ballHeld = false;
+    public bool ballHeld = false;
     [SerializeField] Transform catapultOrgin;
     [SerializeField] private float impulseFactor = 2f;
     [SerializeField] private LineRenderer ropeLine;
