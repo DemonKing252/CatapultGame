@@ -299,7 +299,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8351808922207029414, guid: 63d52682d6f3df44f86d57716775725c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8.24
+      value: -9.5
       objectReference: {fileID: 0}
     - target: {fileID: 8351808922207029414, guid: 63d52682d6f3df44f86d57716775725c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1542,7 +1542,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5104184220289703240, guid: 9c15b9eb9210c974bad39ab6d7057139, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8.7
+      value: -9
       objectReference: {fileID: 0}
     - target: {fileID: 5104184220289703240, guid: 9c15b9eb9210c974bad39ab6d7057139, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2161,7 +2161,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2994674153562433522, guid: ff9079eee26992b43b8b29eb9dfc3b6e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -9.12
+      value: -8.5
       objectReference: {fileID: 0}
     - target: {fileID: 2994674153562433522, guid: ff9079eee26992b43b8b29eb9dfc3b6e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2218,7 +2218,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4831496663848112802, guid: 8b377ab4f4147c44687e9d1bb69c6bad, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -9.393833
+      value: -9.5
       objectReference: {fileID: 0}
     - target: {fileID: 4831496663848112802, guid: 8b377ab4f4147c44687e9d1bb69c6bad, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2413,7 +2413,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1371941964}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 21.45, y: 0.67, z: -0.10386551}
+  m_LocalPosition: {x: 21.45, y: 3.23, z: -0.10386551}
   m_LocalScale: {x: 4.1, y: 0.5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3089,7 +3089,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1536456367}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 21.97, y: -3.07, z: -0.10386551}
+  m_LocalPosition: {x: 21.97, y: -0.54, z: -0.10386551}
   m_LocalScale: {x: 18.69, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3206,6 +3206,7 @@ MonoBehaviour:
   projectileLine: {fileID: 1276591142}
   ballRigidBody: {fileID: 1675227357}
   sliceCount: 40
+  ballHeld: 0
   catapultOrgin: {fileID: 723318359}
   impulseFactor: 8
   ropeLine: {fileID: 1276591142}
@@ -3573,12 +3574,32 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 7297163532896726536, guid: f8445c3d654d587448becd1bf76af5c7, type: 3}
+      propertyPath: backgrounds.Array.data[2].offset.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7297163532896726536, guid: f8445c3d654d587448becd1bf76af5c7, type: 3}
+      propertyPath: backgrounds.Array.data[3].offset.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7297163532896726536, guid: f8445c3d654d587448becd1bf76af5c7, type: 3}
       propertyPath: backgrounds.Array.data[2].scrollSpeed
       value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 7297163532896726536, guid: f8445c3d654d587448becd1bf76af5c7, type: 3}
       propertyPath: backgrounds.Array.data[3].scrollSpeed
       value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7297163532896726536, guid: f8445c3d654d587448becd1bf76af5c7, type: 3}
+      propertyPath: backgrounds.Array.data[1].sizeDimensions.x
+      value: 15.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 7297163532896726536, guid: f8445c3d654d587448becd1bf76af5c7, type: 3}
+      propertyPath: backgrounds.Array.data[2].sizeDimensions.x
+      value: 15.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 7297163532896726536, guid: f8445c3d654d587448becd1bf76af5c7, type: 3}
+      propertyPath: backgrounds.Array.data[3].sizeDimensions.x
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 7297163532896726537, guid: f8445c3d654d587448becd1bf76af5c7, type: 3}
       propertyPath: m_Name
@@ -3594,7 +3615,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7297163532896726539, guid: f8445c3d654d587448becd1bf76af5c7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -13
+      value: -10.73
       objectReference: {fileID: 0}
     - target: {fileID: 7297163532896726539, guid: f8445c3d654d587448becd1bf76af5c7, type: 3}
       propertyPath: m_LocalPosition.z
