@@ -75,7 +75,7 @@ public class CatapultController : MonoBehaviour
         
         if (ballHeld)
         {
-            Vector2 impulse = (catapultOrgin.position - ballRigidBody.transform.position).normalized * impulseFactor;
+            Vector2 impulse = (catapultOrgin.position - ballRigidBody.transform.position)/*.normalized*/ * impulseFactor;
             this.PredictProjectilePath(impulse);
 
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
