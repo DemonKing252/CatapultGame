@@ -64,13 +64,34 @@ public class PrallaxBackground : MonoBehaviour
         cameraPosCurrent = Camera.main.transform.position;
         cameraPosDelta = cameraPosCurrent - cameraPosLast;
 
-        for(int j = 0; j < backgroundLists.Length; j++)
+        for (int j = 0; j < backgroundLists.Length; j++)
         {
             for (int i = 0; i < backgroundLists[j].Count; i++)
             {
                 backgroundLists[j][i].transform.position += new Vector3(cameraPosDelta.x, 0f, 0f) * backgrounds[j].scrollSpeed;
             }
         }
-        
+        Vector3 cameraPosition = Camera.main.transform.position;
+        for (int j = 0; j < backgroundLists.Length; j++)
+        {
+            for (int i = 0; i < backgroundLists[j].Count; i++)
+            {
+                Vector3 bgPosition = backgroundLists[j][i].transform.position;
+
+                // (g)
+                float differenceX = cameraPosition.x - backgroundLists[j][i].transform.position.x;
+                if (differenceX > Mathf.FloorToInt(backgrounds[j].spawnDimensions.x / 2f) * backgrounds[j].sizeDimensions.x)
+                {
+                    bgPosition.x += backgrounds[j].sizeDimensions.x * Mathf.CeilToInt(backgrounds[j].spawnDimensions.x / 2f) + 1f;
+                    backgroundLists[j][i].transform.position = bgPosition;
+                }
+                if (differenceX < -Mathf.FloorToInt(backgrounds[j].spawnDimensions.x / 2f) * backgrounds[j].sizeDimensions.x)
+                {
+                    bgPosition.x -= backgrounds[j].sizeDimensions.x * Mathf.CeilToInt(backgrounds[j].spawnDimensions.x / 2f) + 1f;
+                    backgroundLists[j][i].transform.position = bgPosition;
+                }
+            }
+        }
+
     }
 }

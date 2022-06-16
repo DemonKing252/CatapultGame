@@ -7894,34 +7894,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7297163532896726536, guid: f8445c3d654d587448becd1bf76af5c7, type: 3}
-      propertyPath: backgrounds.Array.data[2].offset.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7297163532896726536, guid: f8445c3d654d587448becd1bf76af5c7, type: 3}
-      propertyPath: backgrounds.Array.data[3].offset.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7297163532896726536, guid: f8445c3d654d587448becd1bf76af5c7, type: 3}
-      propertyPath: backgrounds.Array.data[2].scrollSpeed
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7297163532896726536, guid: f8445c3d654d587448becd1bf76af5c7, type: 3}
-      propertyPath: backgrounds.Array.data[3].scrollSpeed
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7297163532896726536, guid: f8445c3d654d587448becd1bf76af5c7, type: 3}
-      propertyPath: backgrounds.Array.data[1].sizeDimensions.x
-      value: 15.36
-      objectReference: {fileID: 0}
-    - target: {fileID: 7297163532896726536, guid: f8445c3d654d587448becd1bf76af5c7, type: 3}
-      propertyPath: backgrounds.Array.data[2].sizeDimensions.x
-      value: 15.36
-      objectReference: {fileID: 0}
-    - target: {fileID: 7297163532896726536, guid: f8445c3d654d587448becd1bf76af5c7, type: 3}
-      propertyPath: backgrounds.Array.data[3].sizeDimensions.x
-      value: 16
-      objectReference: {fileID: 0}
     - target: {fileID: 7297163532896726537, guid: f8445c3d654d587448becd1bf76af5c7, type: 3}
       propertyPath: m_Name
       value: ParallaxBackground

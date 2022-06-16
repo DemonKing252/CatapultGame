@@ -46,19 +46,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backgrounds:
   - prefab: {fileID: 4831496663848112803, guid: 8b377ab4f4147c44687e9d1bb69c6bad, type: 3}
-    spawnDimensions: {x: 6, y: 6}
+    spawnDimensions: {x: 5, y: 5}
     sizeDimensions: {x: 14.72, y: 8.32}
     scrollSpeed: 0.1
+    offset: {x: 0, y: 0, z: 0}
   - prefab: {fileID: 8351808922207029413, guid: 63d52682d6f3df44f86d57716775725c, type: 3}
-    spawnDimensions: {x: 6, y: 1}
-    sizeDimensions: {x: 9.6, y: 8.32}
+    spawnDimensions: {x: 5, y: 1}
+    sizeDimensions: {x: 15.36, y: 8.32}
     scrollSpeed: 0.2
+    offset: {x: 0, y: 0, z: 0}
   - prefab: {fileID: 5104184220289703241, guid: 9c15b9eb9210c974bad39ab6d7057139, type: 3}
-    spawnDimensions: {x: 6, y: 1}
-    sizeDimensions: {x: 7.04, y: 8.32}
-    scrollSpeed: 0.2
+    spawnDimensions: {x: 5, y: 1}
+    sizeDimensions: {x: 15.36, y: 8.32}
+    scrollSpeed: 0.3
+    offset: {x: 0, y: 0.5, z: 0}
   - prefab: {fileID: 2994674153562433523, guid: ff9079eee26992b43b8b29eb9dfc3b6e, type: 3}
-    spawnDimensions: {x: 6, y: 1}
-    sizeDimensions: {x: 7.68, y: 8.32}
-    scrollSpeed: 0.2
+    spawnDimensions: {x: 5, y: 1}
+    sizeDimensions: {x: 16, y: 8.32}
+    scrollSpeed: 0.4
+    offset: {x: 0, y: 1, z: 0}
   x: 0
