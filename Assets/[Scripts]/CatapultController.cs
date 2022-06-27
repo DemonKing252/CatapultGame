@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Tilemaps;
 
 public class CatapultController : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class CatapultController : MonoBehaviour
     [SerializeField] private LineRenderer ropeLine;
     [SerializeField] private LineRenderer line1;
     [SerializeField] private LineRenderer line2;
+    [SerializeField] private float ballLaunchRange;
 
 
     [SerializeField] private GameObject replicateParentTransform;
@@ -37,9 +39,6 @@ public class CatapultController : MonoBehaviour
         _simulationScene = SceneManager.CreateScene("Simulation", new CreateSceneParameters(LocalPhysicsMode.Physics2D));
         _physicsSimulationScene = _simulationScene.GetPhysicsScene2D();
 
-    }
-    private void Awake()
-    {
     }
     private void OnDestroy()
     {
@@ -75,12 +74,23 @@ public class CatapultController : MonoBehaviour
         
         if (ballHeld)
         {
-            Vector2 impulse = (catapultOrgin.position - ballRigidBody.transform.position)/*.normalized*/ * impulseFactor;
+            /// Launch in the opposite direction of where the ball is relative to the catapult, and normalize the difference in position between the catapult
+            /// and multiply by ballLaunchRange to clamp the position (in this case, it won't go past a max distance of 1.5 units away from the centre of the catapult).
+
+            Vector2 impulse = (catapultOrgin.position - ballRigidBody.transform.position) * impulseFactor;
             this.PredictProjectilePath(impulse);
 
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePosition.z = 0f;
-            ballRigidBody.transform.position = mousePosition;
+
+            Vector3 catapultDifference = mousePosition - catapultOrgin.position;
+            catapultDifference.z = 0f;
+
+            //print(catapultDifference.magnitude);
+            if (catapultDifference.magnitude > ballLaunchRange)
+                catapultDifference = catapultDifference.normalized * ballLaunchRange;
+
+            ballRigidBody.transform.position = catapultOrgin.position + catapultDifference;
         }
     }
     private void PredictProjectilePath(Vector2 impulse)
@@ -97,6 +107,12 @@ public class CatapultController : MonoBehaviour
         for (int i = 0; i < replicateParentTransform.transform.childCount; i++)
         {
             GameObject temp = Instantiate(replicateParentTransform.transform.GetChild(i).gameObject);
+            
+            if (temp.GetComponentInChildren<SpriteRenderer>() != null)
+                temp.GetComponentInChildren<SpriteRenderer>().enabled = false;    // No need to render any sprites (only the collider matters).
+
+            else if (temp.GetComponentInChildren<TilemapRenderer>() != null)
+                temp.GetComponentInChildren<TilemapRenderer>().enabled = false;    // No need to render any tilemap renderers (only the collider matters).
 
             temp.transform.position = replicateParentTransform.transform.GetChild(i).gameObject.transform.position;
             temp.transform.rotation = replicateParentTransform.transform.GetChild(i).gameObject.transform.rotation;
