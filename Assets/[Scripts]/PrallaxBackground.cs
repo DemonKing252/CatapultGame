@@ -28,14 +28,10 @@ public class PrallaxBackground : MonoBehaviour
     void Start()
     {
         backgroundLists = new List<GameObject>[4];
-        backgroundLists[0] = new List<GameObject>();
-        backgroundLists[1] = new List<GameObject>();
-        backgroundLists[2] = new List<GameObject>();
-        backgroundLists[3] = new List<GameObject>();
-
-        // 3 -> - 1 = -2
-        // 5 -> -2 = -3
-        // 7 ->
+        for (int i = 0; i < backgroundLists.Length; i++)
+        {
+            backgroundLists[i] = new List<GameObject>();
+        }
 
         for (int k = 0; k < backgrounds.Length; k++)
         {
@@ -78,7 +74,6 @@ public class PrallaxBackground : MonoBehaviour
             {
                 Vector3 bgPosition = backgroundLists[j][i].transform.position;
 
-                // (g)
                 float differenceX = cameraPosition.x - backgroundLists[j][i].transform.position.x;
                 if (differenceX > Mathf.FloorToInt(backgrounds[j].spawnDimensions.x / 2f) * backgrounds[j].sizeDimensions.x)
                 {
